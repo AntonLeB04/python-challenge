@@ -7,37 +7,38 @@ AvgChange = []
 GreatestIncrease = []
 GreatestDecrease = []
 
-budget = os.path.join("Resources", "budget_data.csv")
+# Reading the csv file
+budget_csv = os.path.join("Resources", "budget_data.csv")
 
 
 
 
-with open(budget) as csvfile:
+with open(budget_csv) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
-    for row in csvreader:
+    headline = csvfile.next()
+    Total = 0
+
+    for row in csvreader(csvfile):
         # Add place
-        Total.append(row[0])
+        Total += int(row[1])
 
         # Add population
-        TotalMonths.append(row[1])
+        TotalMonths.append(int(row[0]))
 
         # Average Change
-        AvgChange = round(int(row[0]) / int(row[1]))
+        AvgChange = round(int(row[1]) / int(row[0]))
 
-        print(AvgChange)
-        
-cleanedpath = list(zip(Total,TotalMonths,AvgChange))
-
-# Set variable for output file
-output_file = os.path.join('Analysis')
+        print(Total)
+    
+output_file = os.path.join("Analysis", "Financial Analysis")
 
 #  Open the output file
-with open(output_file, "w", newline='') as Analysis:
-    writer = csv.writer(Analysis)
+with open(output_file, "w", newline='') as datafile:
+    writer = csv.writer(datafile)
 
     # Write the header row
-    writer.writerow([Analysis])
+    writer.writerow(["Analysis for Financial Records"])
 
     # Write in zipped rows
-    writer.writerows(cleanedpath)
+    writer.writerows(Total)
