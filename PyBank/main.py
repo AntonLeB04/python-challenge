@@ -48,12 +48,8 @@ with open(budget_csv) as csvfile:
             GreatestDecrease[1] = change
             GreatestDecrease[0] = row[0]
 
-        # Average Change
-        #AvgChange = round(int(row[1]) / int(row[0]))
-
+       
 print(GreatestDecrease)
-
-cleaned_csv = list(zip(str((Total, TotalMonths))))
 
 output = f"""
 Financial Analysis
