@@ -27,24 +27,24 @@ with open(budget_csv) as csvfile:
 
         # Total Months
         TotalMonths += 1 
-
+        
         currentprofit = int((row[1]))
-
+        #Calculating the previous profit
         if PreviousProfit != 0:
             change = currentprofit - PreviousProfit
             totalchange += change
             counter += 1
 
         PreviousProfit = currentprofit
-
+        #Getting the Greatest increase
         if change > GreatestIncrease[1]:
             GreatestIncrease[1] = change
             GreatestIncrease[0] = row[0]
-
+        #Getting the Greatest Decrease
         if change < GreatestDecrease[1]:
             GreatestDecrease[1] = change
             GreatestDecrease[0] = row[0]
-
+#Making the output file
 output = f"""
 Financial Analysis
 ----------------------------
