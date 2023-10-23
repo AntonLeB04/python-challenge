@@ -10,9 +10,6 @@ GreatestDecrease = ["",0]
 # Reading the csv file
 budget_csv = os.path.join("Resources", "budget_data.csv")
 
-
-
-
 with open(budget_csv) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
@@ -47,9 +44,6 @@ with open(budget_csv) as csvfile:
         if change < GreatestDecrease[1]:
             GreatestDecrease[1] = change
             GreatestDecrease[0] = row[0]
-
-       
-print(GreatestDecrease)
 
 output = f"""
 Financial Analysis
